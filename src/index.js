@@ -12,15 +12,13 @@ const getWeatherData = async () => {
       'X-RapidAPI-Key': process.env.RAPID_API_KEY,
       'X-RapidAPI-Host': 'weatherbit-v1-mashape.p.rapidapi.com',
     },
+    timeout: 5000,
   };
   try {
-    const weather = await axios(options);
+    const { data } = await axios(options);
     let listItems = '';
-    const todaysDate = format(
-      new Date(weather.data.data[0].timestamp_utc),
-      'dd'
-    );
-    const todaysList = weather.data.data.filter(
+    const todaysDate = format(new Date(data.data[0].timestamp_utc), 'dd');
+    const todaysList = data.data.filter(
       (item) =>
         format(new Date(item.timestamp_utc), 'dd') < parseInt(todaysDate) + 2
     );
@@ -51,4 +49,35 @@ const getWeatherData = async () => {
   }
 };
 
+const getExchangeRatesData = async () => {
+  const options = {
+    method: 'GET',
+    url: process.env.EXCHANGE_RATES_API_URL,
+    // vancouver location
+    params: { to: 'JPY', from: 'CAD', amount: 1 },
+    headers: {
+      apikey: process.env.EXCHANGE_RATES_API_KEY,
+    },
+    timeout: 5000,
+  };
+  try {
+    const { data } = await axios(options);
+    const fromValInt = data.info.rate.toString().split('.')[0];
+    const fromValDecimal = data.info.rate.toString().split('.')[1];
+    document.querySelector('.currency').innerHTML = `
+    <p class="currency__from">${Number(data.query.amount).toFixed(
+      2
+    )} Canadian Dollar = </p>
+    <p class="currency__to">${fromValInt}<span class="currency__decimal">.${fromValDecimal}</span> Japanese Yen</p>
+    <p class="currency__time">Updated at: ${format(
+      data.info.timestamp * 1000,
+      'MM/dd HH:mm'
+    )}</p>
+    `;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 getWeatherData();
+getExchangeRatesData();
