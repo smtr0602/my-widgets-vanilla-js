@@ -1,8 +1,9 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {
-  mode: 'development',
+const Dotenv = require('dotenv-webpack');
+
+module.exports = (env) => ({
   entry: {
     bundle: path.resolve(__dirname, 'src/index.js'),
   },
@@ -46,10 +47,13 @@ module.exports = {
     ],
   },
   plugins: [
+    new Dotenv({
+      path: `./.env.${env.development ? 'development' : 'production'}`,
+    }),
     new HtmlWebpackPlugin({
       title: 'Webpack App',
       filename: 'index.html',
       template: 'src/template.html',
     }),
   ],
-};
+});
