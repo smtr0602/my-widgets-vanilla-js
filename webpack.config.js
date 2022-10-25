@@ -19,7 +19,6 @@ module.exports = (env) => ({
       directory: path.resolve(__dirname, 'dist'),
     },
     port: 4000,
-    open: true,
     hot: true,
     compress: true,
     historyApiFallback: true,
@@ -56,4 +55,7 @@ module.exports = (env) => ({
       template: 'src/template.html',
     }),
   ],
+  resolve: {
+    fallback: { fs: false, path: false, buffer: false, stream: false },
+  },
 });
