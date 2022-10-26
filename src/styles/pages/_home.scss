@@ -74,3 +74,36 @@
     color: $grey-dark;
   }
 }
+.news {
+  height: 350px;
+  overflow-y: scroll;
+  ul {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  li {
+    border: 1px solid $grey;
+    border-radius: 5px;
+    img {
+      border-radius: 5px;
+      object-fit: cover;
+      height: 125px;
+    }
+  }
+  &-content {
+    height: 180px;
+    overflow-y: scroll;
+    padding: 1rem;
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+    p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-top: 1rem;
+    }
+  }
+}

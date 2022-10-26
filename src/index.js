@@ -20,7 +20,7 @@ const getWeatherData = async () => {
     const todaysDate = format(new Date(data.data[0].timestamp_utc), 'dd');
     const todaysList = data.data.filter(
       (item) =>
-        format(new Date(item.timestamp_utc), 'dd') < parseInt(todaysDate) + 2
+        format(new Date(item.timestamp_utc), 'dd') < parseInt(todaysDate) + 3
     );
     todaysList.forEach((item) => {
       const time = new Date(item.timestamp_utc);
@@ -79,5 +79,36 @@ const getExchangeRatesData = async () => {
   }
 };
 
+const getNewsData = async () => {
+  const options = {
+    method: 'GET',
+    url: process.env.NEWS_API_URL,
+    params: {
+      country: 'jp',
+      apiKey: process.env.NEWS_API_KEY,
+    },
+    timeout: 5000,
+  };
+  try {
+    const { data } = await axios(options);
+    let articleItems = '';
+    data.articles.forEach((article) => {
+      articleItems += `
+      <li class="news-item">
+        <img src="${article.urlToImage}" alt="${article.title}" />
+        <div class="news-content">
+          <h2>${article.title}</h2>
+          <p>${article.description}</p>
+        </div>
+      </li>
+      `;
+    });
+    document.querySelector('.news').innerHTML = `<ul>${articleItems}</ul>`;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 getWeatherData();
 getExchangeRatesData();
+getNewsData();
