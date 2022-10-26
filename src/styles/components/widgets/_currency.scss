@@ -1,0 +1,22 @@
+@use '../../utilities/variables' as *;
+@use '../../utilities/mixins' as *;
+
+.currency {
+  display: inline-block;
+  grid-area: currency;
+  &__from {
+    font-size: 1.4rem;
+  }
+  &__to {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 1rem;
+  }
+  &__time {
+    font-size: 1rem;
+    margin-top: 2rem;
+  }
+  &__decimal {
+    color: $grey-dark;
+  }
+}

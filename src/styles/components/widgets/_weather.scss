@@ -1,0 +1,59 @@
+@use '../../utilities/variables' as *;
+@use '../../utilities/mixins' as *;
+
+.weather {
+  grid-area: weather;
+  padding-bottom: 0;
+  ul {
+    display: flex;
+    gap: 1rem;
+    overflow-x: scroll;
+    padding-bottom: 1rem;
+    li {
+      border: 1px solid #ddd;
+      border-radius: 0.5rem;
+      min-width: 100px;
+      padding: 1%;
+      position: relative;
+      img {
+        width: 70%;
+      }
+    }
+  }
+  .unit {
+    font-size: 1.2rem;
+  }
+  &__date {
+    font-size: 0.9rem;
+    left: 4px;
+    position: absolute;
+    text-align: center;
+    top: 1.3rem;
+    z-index: 2;
+    &::before {
+      background-color: #ffe5c1;
+      border-radius: 50%;
+      content: '';
+      left: 50%;
+      height: 3.5rem;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 3.5rem;
+      z-index: -1;
+    }
+  }
+  &__time {
+    font-size: 1.2rem;
+    margin-top: 0.2rem;
+    text-align: right;
+  }
+  &__temp {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 1.4rem;
+  }
+  &__desc {
+    font-size: 1rem;
+  }
+}
