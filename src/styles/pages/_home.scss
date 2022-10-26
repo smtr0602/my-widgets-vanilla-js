@@ -1,13 +1,33 @@
 @use '../utilities/variables' as *;
 @use '../utilities/mixins' as *;
 
+.heading-wrap {
+  grid-area: heading-wrap;
+}
+.sm-widgets-wrap {
+  grid-area: sm-widgets;
+  margin-left: 8%;
+}
+h1 {
+  color: $white-primary;
+  font-size: 4.5rem;
+  font-weight: 300;
+}
+.quote {
+  color: $white-primary;
+  font-size: 1.4rem;
+  font-style: italic;
+  line-height: 1.6;
+  margin-top: 2rem;
+}
 .widget-item {
   background-color: $white-primary;
-  border-radius: 10px;
-  margin-top: 2rem;
+  border-radius: 15px;
+  box-shadow: 30px 29px 15px 0px rgb(0 0 0 / 35%);
   padding: 1rem 1.5rem;
 }
 .weather {
+  grid-area: weather;
   padding-bottom: 0;
   ul {
     display: flex;
@@ -20,24 +40,27 @@
       min-width: 100px;
       padding: 1%;
       position: relative;
+      img {
+        width: 70%;
+      }
     }
   }
   .unit {
     font-size: 1.2rem;
   }
   &__date {
-    font-size: 1.1rem;
-    left: 3px;
+    font-size: 0.9rem;
+    left: 4px;
     position: absolute;
     text-align: center;
-    top: 1rem;
+    top: 1.3rem;
     z-index: 2;
     &::before {
-      background-color: #ffdcbd;
+      background-color: #ffe5c1;
       border-radius: 50%;
       content: '';
       left: 50%;
-      height: 3rem;
+      height: 3.5rem;
       position: absolute;
       top: 50%;
       transform: translate(-50%, -50%);
@@ -46,23 +69,27 @@
     }
   }
   &__time {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
+    margin-top: 0.2rem;
     text-align: right;
   }
   &__temp {
-    font-size: 2.4rem;
+    font-size: 2rem;
     font-weight: bold;
     margin-top: 1.4rem;
+  }
+  &__desc {
+    font-size: 1rem;
   }
 }
 .currency {
   display: inline-block;
-  padding: 2rem 3rem;
+  grid-area: currency;
   &__from {
     font-size: 1.4rem;
   }
   &__to {
-    font-size: 2.2rem;
+    font-size: 2rem;
     font-weight: bold;
     margin-top: 1rem;
   }
@@ -75,16 +102,18 @@
   }
 }
 .news {
+  grid-area: news;
   height: 350px;
   overflow-y: scroll;
   ul {
     display: grid;
-    gap: 2rem;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   }
   li {
     border: 1px solid $grey;
     border-radius: 5px;
+    position: relative;
     img {
       border-radius: 5px;
       object-fit: cover;
@@ -95,13 +124,32 @@
     height: 180px;
     overflow-y: scroll;
     padding: 1rem;
+    .link-bg {
+      background-color: $white-primary;
+      border-radius: 3px;
+      padding: 2px;
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      i {
+        color: $black-primary;
+        font-size: 1.4rem;
+      }
+    }
     h2 {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 600;
       line-height: 1.4;
+      a {
+        color: inherit;
+        font-size: inherit;
+        &:hover {
+          opacity: 0.8;
+        }
+      }
     }
     p {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       line-height: 1.6;
       margin-top: 1rem;
     }

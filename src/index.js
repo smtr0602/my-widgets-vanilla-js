@@ -2,6 +2,37 @@ import axios from 'axios';
 import { format } from 'date-fns';
 import './styles/main.scss';
 
+const getGreeting = () => {
+  const time = new Date().getHours();
+  let timeOfDayText;
+  if (time >= 5 && time < 12) {
+    timeOfDayText = 'morning';
+  } else if (time >= 12 && time < 17) {
+    timeOfDayText = 'afternoon';
+  } else {
+    timeOfDayText = 'evening';
+  }
+  document.querySelector(
+    'h1'
+  ).textContent = `Good ${timeOfDayText}, ${process.env.USER_NAME}!`;
+};
+
+const getQuote = async () => {
+  const options = {
+    method: 'GET',
+    url: process.env.QUOTE_API_URL,
+    timeout: 5000,
+  };
+  try {
+    const { data } = await axios(options);
+    document.querySelector(
+      '.quote'
+    ).textContent = `“${data.quote}” - ${data.person}`;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const getWeatherData = async () => {
   const options = {
     method: 'GET',
@@ -95,11 +126,16 @@ const getNewsData = async () => {
     data.articles.forEach((article) => {
       articleItems += `
       <li class="news-item">
-        <img src="${article.urlToImage}" alt="${article.title}" />
-        <div class="news-content">
-          <h2>${article.title}</h2>
-          <p>${article.description}</p>
-        </div>
+          <img src="${article.urlToImage}" alt="${article.title}" />
+          <div class="news-content">
+            <div class="link-bg">
+            <a href="${article.url}" target="_blank">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+            </div>
+            <h2>${article.title}</h2>
+            <p>${article.description}</p>
+          </div>
       </li>
       `;
     });
@@ -109,6 +145,8 @@ const getNewsData = async () => {
   }
 };
 
+getGreeting();
+getQuote();
 getWeatherData();
 getExchangeRatesData();
 getNewsData();

@@ -1,10 +1,28 @@
 @use '../utilities/variables' as *;
 
 body {
-  // background-color: $white-primary;
-  background-color: #ccc; // TODO: temp
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.1)
+    ),
+    url(https://source.unsplash.com/random/900%C3%97700/?morning) no-repeat
+      center center/cover;
+  display: flex;
+  align-items: center;
+  height: 100vh;
   width: 100%;
-  height: 100%;
+}
+main {
+  align-items: center;
+  display: grid;
+  grid-template: repeat((2, 1fr)) / repeat((2, 1fr));
+  grid-template-areas:
+    'weather weather'
+    'heading-wrap sm-widgets'
+    'news news';
+  margin: 0 auto;
+  max-width: 1400px;
+  width: 90%;
 }
 img {
   width: 100%;
