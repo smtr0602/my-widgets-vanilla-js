@@ -5,6 +5,7 @@
 @use './base/typography';
 @use './base/theme';
 
+@use './components/loading';
 @use './components/widgets/common';
 @use './components/widgets/heading';
 @use './components/widgets/weather';

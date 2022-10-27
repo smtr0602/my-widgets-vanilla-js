@@ -1,4 +1,4 @@
-const getTimeOfDayText = () => {
+export const getTimeOfDayText = () => {
   const time = new Date().getHours();
   if (time >= 5 && time < 12) {
     return 'morning';
@@ -11,4 +11,10 @@ const getTimeOfDayText = () => {
   }
 };
 
-export { getTimeOfDayText };
+export const defaultTimeout = (time) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve();
+    }, time);
+  });
+};
