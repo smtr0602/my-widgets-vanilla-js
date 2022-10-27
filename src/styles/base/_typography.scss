@@ -1,8 +1,9 @@
 @use '../utilities/variables' as *;
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
 html,
 body {
   color: $black-primary;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 62.5%;
 }

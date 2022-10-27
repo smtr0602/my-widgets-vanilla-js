@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const Dotenv = require('dotenv-webpack');
 
@@ -41,7 +42,14 @@ module.exports = (env) => ({
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'imgs/[name].[ext]',
+            },
+          },
+        ],
       },
     ],
   },
@@ -53,6 +61,10 @@ module.exports = (env) => ({
       title: 'Webpack App',
       filename: 'index.html',
       template: 'src/template.html',
+    }),
+    new CopyPlugin({
+      // copy assets dir
+      patterns: ['./assets'],
     }),
   ],
   resolve: {

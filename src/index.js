@@ -1,20 +1,30 @@
 import axios from 'axios';
 import { format } from 'date-fns';
+import { getTimeOfDayText } from './helpers';
 import './styles/main.scss';
 
+const getBgImage = async () => {
+  const timeOfDayText = getTimeOfDayText();
+  // ---- for unsplash random images ------------------
+  // unsplash random images: https://source.unsplash.com/random/1280x853/?morning
+  // document.body.style.backgroundImage = `url(https://source.unsplash.com/random/1280x853/?${timeOfDayText})`;
+  // --------------------------------------------------
+  const { body } = document;
+  body.style.backgroundImage = `url(/imgs/bg/${timeOfDayText}.png)`;
+  body.classList.add(timeOfDayText);
+};
+
 const getGreeting = () => {
-  const time = new Date().getHours();
-  let timeOfDayText;
-  if (time >= 5 && time < 12) {
-    timeOfDayText = 'morning';
-  } else if (time >= 12 && time < 17) {
-    timeOfDayText = 'afternoon';
-  } else {
-    timeOfDayText = 'evening';
-  }
+  const timeOfDayText = getTimeOfDayText();
+  const greeingText = {
+    morning: 'morning',
+    afternoon: 'afternoon',
+    evening: 'afternoon',
+    night: 'evening',
+  };
   document.querySelector(
     'h1'
-  ).textContent = `Good ${timeOfDayText}, ${process.env.USER_NAME}!`;
+  ).textContent = `Good ${greeingText[timeOfDayText]}, ${process.env.USER_NAME}!`;
 };
 
 const getQuote = async () => {
@@ -145,8 +155,13 @@ const getNewsData = async () => {
   }
 };
 
-getGreeting();
-getQuote();
-getWeatherData();
-getExchangeRatesData();
-getNewsData();
+const init = () => {
+  getBgImage();
+  getGreeting();
+  getQuote();
+  getWeatherData();
+  getExchangeRatesData();
+  getNewsData();
+};
+
+init();

@@ -4,15 +4,24 @@
 .heading-wrap {
   grid-area: heading-wrap;
   h1 {
-    color: $white-primary;
+    color: $black-primary;
     font-size: 4.5rem;
     font-weight: 300;
+    text-shadow: 0px 0px 6px rgb(255, 255, 255, 0.8);
+    body.night & {
+      color: $white-primary;
+    }
   }
   .quote {
-    color: $white-primary;
-    font-size: 1.4rem;
+    color: $black-primary;
+    font-size: 1.5rem;
     font-style: italic;
+    font-weight: bold;
     line-height: 1.6;
     margin-top: 2rem;
+    text-shadow: 0px 0px 6px rgb(255, 255, 255, 0.8);
+    body.night & {
+      color: $white-primary;
+    }
   }
 }

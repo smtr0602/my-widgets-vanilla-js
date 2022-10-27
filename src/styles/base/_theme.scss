@@ -1,16 +1,23 @@
 @use '../utilities/variables' as *;
 
 body {
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.1),
-      rgba(255, 255, 255, 0.1)
-    ),
-    url(https://source.unsplash.com/random/900%C3%97700/?morning) no-repeat
-      center center/cover;
+  background: no-repeat center center/cover;
   display: flex;
   align-items: center;
   height: 100vh;
+  position: relative;
   width: 100%;
+  z-index: -2;
+  &::before {
+    background: rgba(255, 255, 255, 0.2);
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+  }
 }
 main {
   align-items: center;

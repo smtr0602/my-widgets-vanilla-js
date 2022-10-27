@@ -1,3 +1,6 @@
 /node_modules
 .env.*
 /temp
+/assets/imgs/bg/morning
+/assets/imgs/bg/afternoon
+/assets/imgs/bg/evening
