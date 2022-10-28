@@ -17,13 +17,15 @@ const getWeatherData = async () => {
     try {
       const { data } = await axios(options);
       let listItems = '';
-      const todaysDate = format(new Date(data.data[0].timestamp_utc), 'dd');
-      const todaysList = data.data.filter(
-        (item) =>
-          format(new Date(item.timestamp_utc), 'dd') < parseInt(todaysDate) + 3
-      );
+      const todaysDate = format(new Date(data.data[0].timestamp_local), 'dd');
+      const todaysList = data.data.filter((item) => {
+        return (
+          format(new Date(item.timestamp_local), 'dd') <
+          parseInt(todaysDate) + 3
+        );
+      });
       todaysList.forEach((item) => {
-        const time = new Date(item.timestamp_utc);
+        const time = new Date(item.timestamp_local);
         listItems += `
         <li>
           <p class="weather__date">${format(time, 'MM/dd')}</p>
