@@ -70,4 +70,9 @@ module.exports = (env) => ({
   resolve: {
     fallback: { fs: false, path: false, buffer: false, stream: false },
   },
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000,
+  },
 });
