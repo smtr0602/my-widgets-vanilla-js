@@ -2,26 +2,45 @@
 @use '../../utilities/mixins' as *;
 
 .heading-wrap {
-  grid-area: heading-wrap;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.4);
+  padding: 1rem 1.5rem;
+  @include for-md-screen-up {
+    max-width: 50%;
+  }
+  .night & {
+    background: rgba(0, 0, 0, 0.3);
+  }
   h1 {
     color: $black-primary;
-    font-size: 4.5rem;
+    font-size: 3.6rem;
     font-weight: 300;
-    text-shadow: 0px 0px 6px rgb(255, 255, 255, 0.8);
+    line-height: 1.1;
     body.night & {
       color: $white-primary;
+      text-shadow: 0px 0px 6px rgb(255, 255, 255, 0.8);
+    }
+    @include for-md-screen-up {
+      font-size: 4.5rem;
+    }
+    span {
+      @include for-sm-screen {
+        display: block;
+      }
     }
   }
   .quote {
     color: $black-primary;
     font-size: 1.5rem;
     font-style: italic;
-    font-weight: bold;
     line-height: 1.6;
-    margin-top: 2rem;
-    text-shadow: 0px 0px 6px rgb(255, 255, 255, 0.8);
+    margin-top: 1rem;
     body.night & {
       color: $white-primary;
+      text-shadow: 0px 0px 6px rgb(255, 255, 255, 0.8);
+    }
+    @include for-md-screen-up {
+      margin-top: 2rem;
     }
   }
 }

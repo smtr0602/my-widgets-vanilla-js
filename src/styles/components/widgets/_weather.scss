@@ -2,8 +2,11 @@
 @use '../../utilities/mixins' as *;
 
 .weather {
-  grid-area: weather;
   padding-bottom: 0;
+  width: 100%;
+  @include for-md-screen-up {
+    order: 1;
+  }
   ul {
     display: flex;
     gap: 1rem;

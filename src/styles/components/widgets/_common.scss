@@ -1,13 +1,47 @@
 @use '../../utilities/variables' as *;
 @use '../../utilities/mixins' as *;
 
+.order-wrap {
+  display: flex;
+  flex-direction: column;
+}
+.inline-widgets-wrap {
+  display: flex;
+  margin-top: $layout-gap;
+  @include for-sm-screen {
+    flex-direction: column;
+  }
+  @include for-md-screen-up {
+    align-items: center;
+    order: 2;
+  }
+  .widget-item {
+    @include for-md-screen-up {
+      margin-top: 0;
+    }
+  }
+}
 .widget-item {
   background-color: $white-primary;
   border-radius: 15px;
-  box-shadow: 30px 29px 15px 0px rgb(0 0 0 / 35%);
+  box-shadow: 10px 10px 5px 0px rgb(0 0 0 / 35%);
+  margin-top: $layout-gap-lg;
   padding: 1rem 1.5rem;
+  @include for-md-screen-up {
+    box-shadow: 30px 29px 15px 0px rgb(0 0 0 / 35%);
+    margin-top: $layout-gap;
+  }
 }
 .sm-widgets-wrap {
-  grid-area: sm-widgets;
-  margin-left: 8%;
+  @include for-sm-screen {
+    width: 100%;
+  }
+  @include for-md-screen-up {
+    margin-left: 8%;
+  }
+  .widget-item {
+    @include for-sm-screen {
+      width: 100%;
+    }
+  }
 }

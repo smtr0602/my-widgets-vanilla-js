@@ -1,3 +1,8 @@
+@mixin for-sm-screen {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
 @mixin for-md-screen-up {
   @media (min-width: 768px) {
     @content;

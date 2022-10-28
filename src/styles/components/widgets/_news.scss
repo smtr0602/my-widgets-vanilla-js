@@ -2,12 +2,11 @@
 @use '../../utilities/mixins' as *;
 
 .news {
-  grid-area: news;
-  height: 350px;
+  height: 600px;
   overflow-y: scroll;
   ul {
     display: grid;
-    gap: 1rem;
+    gap: 1.5rem;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   }
   li {
@@ -17,7 +16,10 @@
     img {
       border-radius: 5px;
       object-fit: cover;
-      height: 125px;
+      height: 150px;
+      @include for-md-screen-up {
+        height: 125px;
+      }
     }
   }
   &-content {

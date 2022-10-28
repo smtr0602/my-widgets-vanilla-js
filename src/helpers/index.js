@@ -1,4 +1,5 @@
 export const getTimeOfDayText = () => {
+  return 'night';
   const time = new Date().getHours();
   if (time >= 5 && time < 12) {
     return 'morning';

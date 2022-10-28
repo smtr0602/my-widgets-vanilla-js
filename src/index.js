@@ -23,7 +23,7 @@ const getGreeting = () => {
   };
   document.querySelector(
     'h1'
-  ).textContent = `Good ${greeingText[timeOfDayText]}, ${process.env.USER_NAME}!`;
+  ).innerHTML = `Good ${greeingText[timeOfDayText]}, <span>${process.env.USER_NAME}!</span>`;
 };
 
 const init = async () => {
