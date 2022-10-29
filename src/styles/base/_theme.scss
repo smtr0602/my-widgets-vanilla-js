@@ -26,17 +26,16 @@ body {
   }
 }
 main {
-  height: 90%;
+  height: 96%;
   margin: 0 auto;
   max-width: $max-width;
   overflow-y: scroll;
-  padding: 0 4%;
+  padding: 0 4% 20px;
   position: fixed;
-  top: 36px;
   left: 0;
   width: 100%;
   @include for-md-screen-up {
-    top: 40px;
+    padding-bottom: 40px;
   }
 }
 img {

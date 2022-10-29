@@ -6,10 +6,10 @@
   border-radius: 10px;
   cursor: pointer;
   height: 16px;
-  margin-left: auto;
+  margin: 0 auto;
   position: relative;
   transition: background-color 200ms ease-in-out;
-  width: 30px;
+  width: 34px;
   @include for-md-screen-up {
     height: 20px;
     width: 44px;
@@ -34,19 +34,23 @@
   &.isOn {
     background-color: $red;
     &::before {
-      left: 15px;
+      left: 19px;
       @include for-md-screen-up {
         left: 26px;
       }
     }
   }
   &-wrap {
-    margin: 0 auto;
-    max-width: $max-width;
-    padding: 10px 4%;
+    background: $grey;
+    border-radius: 30px;
+    padding: 6px;
     position: fixed;
-    top: 0;
-    width: 100%;
+    top: 5px;
+    right: 2%;
+    width: 50px;
     z-index: 10;
+    @include for-md-screen-up {
+      width: 58px;
+    }
   }
 }
