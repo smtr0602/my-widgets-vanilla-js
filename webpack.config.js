@@ -63,8 +63,8 @@ module.exports = (env) => ({
       template: 'src/template.html',
     }),
     new CopyPlugin({
-      // copy assets dir
-      patterns: ['./assets'],
+      // copy public dir
+      patterns: ['./public'],
     }),
   ],
   resolve: {
