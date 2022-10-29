@@ -6,7 +6,7 @@
   background: rgba(255, 255, 255, 0.4);
   padding: 1rem 1.5rem;
   @include for-md-screen-up {
-    max-width: 50%;
+    width: 50%;
   }
   .night & {
     background: rgba(0, 0, 0, 0.3);

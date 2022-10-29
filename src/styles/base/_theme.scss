@@ -21,11 +21,18 @@ body {
   }
 }
 main {
-  height: 95%;
+  height: 90%;
   margin: 0 auto;
-  max-width: 1400px;
+  max-width: $max-width;
   overflow-y: scroll;
   padding: 0 4%;
+  position: fixed;
+  top: 36px;
+  left: 0;
+  width: 100%;
+  @include for-md-screen-up {
+    top: 40px;
+  }
 }
 img {
   width: 100%;

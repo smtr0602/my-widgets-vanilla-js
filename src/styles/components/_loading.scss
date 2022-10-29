@@ -1,3 +1,5 @@
+@use '../utilities/mixins' as *;
+
 .loading {
   align-items: center;
   background: #a8ebff;
@@ -19,12 +21,15 @@
   }
   span {
     animation: wave 2300ms ease infinite;
-    font-size: 3rem;
+    font-size: 2rem;
     position: relative;
     @for $value from 1 through 7 {
       &:nth-child(#{$value}) {
         animation-delay: #{$value * 0.07}s;
       }
+    }
+    @include for-md-screen-up {
+      font-size: 3rem;
     }
   }
   @keyframes wave {
