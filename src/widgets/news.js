@@ -30,7 +30,9 @@ const getNewsData = async () => {
         </li>
         `;
       });
-      document.querySelector('.news').innerHTML = `<ul>${articleItems}</ul>`;
+      document.querySelector(
+        '.news'
+      ).innerHTML += `<div class="news__inner"><ul>${articleItems}</ul></div>`;
       resolve();
     } catch (error) {
       console.log(error);

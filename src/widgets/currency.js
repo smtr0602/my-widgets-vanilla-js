@@ -18,7 +18,7 @@ const getCurrencyData = async () => {
       const { data } = await axios(options);
       const fromValInt = data.info.rate.toString().split('.')[0];
       const fromValDecimal = data.info.rate.toString().split('.')[1];
-      document.querySelector('.currency').innerHTML = `
+      document.querySelector('.currency').innerHTML += `
       <p class="currency__from">${Number(data.query.amount).toFixed(
         2
       )} Canadian Dollar = </p>

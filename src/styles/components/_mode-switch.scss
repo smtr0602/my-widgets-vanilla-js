@@ -1,0 +1,50 @@
+@use '../utilities/variables' as *;
+@use '../utilities/mixins' as *;
+
+.mode-switch {
+  background-color: $red;
+  border-radius: 10px;
+  cursor: pointer;
+  height: 16px;
+  margin-left: auto;
+  position: relative;
+  width: 30px;
+  @include for-md-screen-up {
+    height: 20px;
+    width: 44px;
+  }
+  &::before {
+    background: #000;
+    border-radius: 50%;
+    content: '';
+    height: 12px;
+    left: 3px;
+    position: absolute;
+    top: 50%;
+    transition: left 100ms ease-in;
+    transform: translateY(-50%);
+    width: 12px;
+    @include for-md-screen-up {
+      height: 14px;
+      left: 4px;
+      width: 14px;
+    }
+  }
+  &.isOn {
+    &::before {
+      left: 15px;
+      @include for-md-screen-up {
+        left: 26px;
+      }
+    }
+  }
+  &-wrap {
+    margin: 0 auto;
+    max-width: $max-width;
+    padding: 10px 4%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+  }
+}

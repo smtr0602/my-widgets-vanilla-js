@@ -43,7 +43,7 @@ const getWeatherData = async () => {
         </li>
         `;
       });
-      document.querySelector('.weather').innerHTML = `
+      document.querySelector('.weather').innerHTML += `
       <ul>${listItems}</ul>
       `;
       resolve();

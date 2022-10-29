@@ -27,9 +27,23 @@
   box-shadow: 10px 10px 5px 0px rgb(0 0 0 / 35%);
   margin-top: $layout-gap-lg;
   padding: 1rem 1.5rem;
+  position: relative;
+  transition: opacity 100ms ease-out;
   @include for-md-screen-up {
     box-shadow: 30px 29px 15px 0px rgb(0 0 0 / 35%);
     margin-top: $layout-gap;
+  }
+  .isEdit & {
+    animation: shake 800ms linear infinite alternate;
+  }
+
+  @keyframes shake {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(-1.5deg);
+    }
   }
 }
 .sm-widgets-wrap {
@@ -43,5 +57,30 @@
     @include for-sm-screen {
       width: 100%;
     }
+  }
+}
+.delete-btn {
+  background-color: $red;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 26px;
+  opacity: 0;
+  position: absolute;
+  right: -5px;
+  top: -10px;
+  transition: opacity 100ms ease-in;
+  width: 26px;
+  z-index: 10;
+  .isEdit & {
+    opacity: 1;
+  }
+  &::before {
+    color: $white-primary;
+    content: '×';
+    font-size: 2rem;
+    position: absolute;
+    right: 50%;
+    top: 45%;
+    transform: translate(50%, -50%);
   }
 }

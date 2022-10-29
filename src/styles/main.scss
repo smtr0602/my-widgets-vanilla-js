@@ -6,6 +6,7 @@
 @use './base/theme';
 
 @use './components/loading';
+@use './components/mode-switch';
 @use './components/widgets/common';
 @use './components/widgets/heading';
 @use './components/widgets/weather';

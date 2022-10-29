@@ -1,4 +1,5 @@
 import getAllWidgetData from './widgets';
+import initModeSwitch from './components/mode-switch';
 import { getTimeOfDayText } from './helpers';
 import './styles/main.scss';
 
@@ -27,6 +28,7 @@ const getGreeting = () => {
 };
 
 const init = async () => {
+  initModeSwitch();
   getBgImage();
   getGreeting();
   await getAllWidgetData();
