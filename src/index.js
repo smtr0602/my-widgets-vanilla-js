@@ -32,6 +32,15 @@ const getGreeting = () => {
   ).innerHTML = `Good ${greeingText[timeOfDayText]}, <span>${process.env.USER_NAME}!</span>`;
 };
 
+const registerSw = () => {
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+      .register('/sw.js')
+      .then((reg) => console.log('service worker registered'))
+      .catch((err) => console.log('service worker not registered', err));
+  }
+};
+
 const init = async () => {
   setDocumentHeight();
   window.addEventListener('resize', setDocumentHeight);
@@ -43,4 +52,5 @@ const init = async () => {
   document.querySelector('.loading').classList.add('isHidden');
 };
 
+registerSw();
 init();
