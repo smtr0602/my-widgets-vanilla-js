@@ -28,22 +28,13 @@
   margin-top: $layout-gap-lg;
   padding: 1rem 1.5rem;
   position: relative;
-  transition: opacity 100ms ease-out;
+  transition: opacity 200ms ease-out;
   @include for-md-screen-up {
     box-shadow: 30px 29px 15px 0px rgb(0 0 0 / 35%);
     margin-top: $layout-gap;
   }
   .isEdit & {
     animation: shake 800ms linear infinite alternate;
-  }
-
-  @keyframes shake {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(-1.5deg);
-    }
   }
 }
 .sm-widgets-wrap {
@@ -82,5 +73,14 @@
     right: 50%;
     top: 45%;
     transform: translate(50%, -50%);
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-1.5deg);
   }
 }

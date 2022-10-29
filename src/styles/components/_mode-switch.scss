@@ -2,12 +2,13 @@
 @use '../utilities/mixins' as *;
 
 .mode-switch {
-  background-color: $red;
+  background-color: $white-primary;
   border-radius: 10px;
   cursor: pointer;
   height: 16px;
   margin-left: auto;
   position: relative;
+  transition: background-color 200ms ease-in-out;
   width: 30px;
   @include for-md-screen-up {
     height: 20px;
@@ -31,6 +32,7 @@
     }
   }
   &.isOn {
+    background-color: $red;
     &::before {
       left: 15px;
       @include for-md-screen-up {
