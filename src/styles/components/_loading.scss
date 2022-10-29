@@ -1,11 +1,16 @@
 @use '../utilities/mixins' as *;
 
+:root {
+  --doc-height: 100%;
+}
+
 .loading {
   align-items: center;
   background: #a8ebff;
   display: flex;
   gap: 1.5rem;
   height: 100vh;
+  height: var(--doc-height);
   justify-content: center;
   left: 0;
   opacity: 1;

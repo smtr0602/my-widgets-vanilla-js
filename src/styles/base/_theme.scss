@@ -1,11 +1,16 @@
 @use '../utilities/variables' as *;
 @use '../utilities/mixins' as *;
 
+:root {
+  --doc-height: 100%;
+}
+
 body {
   align-items: center;
   background: no-repeat center center/cover;
   display: flex;
   height: 100vh;
+  height: var(--doc-height);
   position: relative;
   width: 100%;
   z-index: -2;

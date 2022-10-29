@@ -3,6 +3,11 @@ import initModeSwitch from './components/mode-switch';
 import { getTimeOfDayText } from './helpers';
 import './styles/main.scss';
 
+const setDocumentHeight = () => {
+  const doc = document.documentElement;
+  doc.style.setProperty('--doc-height', `${window.innerHeight}px`);
+};
+
 const getBgImage = async () => {
   const timeOfDayText = getTimeOfDayText();
   // ---- for unsplash random images ------------------
@@ -28,6 +33,9 @@ const getGreeting = () => {
 };
 
 const init = async () => {
+  setDocumentHeight();
+  window.addEventListener('resize', setDocumentHeight);
+
   initModeSwitch();
   getBgImage();
   getGreeting();
