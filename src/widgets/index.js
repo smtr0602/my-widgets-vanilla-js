@@ -5,7 +5,7 @@ import { defaultTimeout } from '../helpers';
 import getNewsData from './news';
 
 const getAllWidgetData = () => {
-  return Promise.all([
+  return Promise.allSettled([
     defaultTimeout(1000),
     getWeatherData(),
     getQuote(),
