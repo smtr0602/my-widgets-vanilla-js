@@ -8,7 +8,7 @@ const getQuote = async () => {
       'X-RapidAPI-Key': process.env.RAPID_API_KEY,
       'X-RapidAPI-Host': 'motivational-quotes1.p.rapidapi.com',
     },
-    timeout: 5000,
+    timeout: process.env.AXIOS_TIMEOUT,
   };
   return new Promise(async (resolve, reject) => {
     try {

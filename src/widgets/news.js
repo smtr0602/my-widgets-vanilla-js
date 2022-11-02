@@ -9,7 +9,7 @@ const getNewsData = async () => {
       apiKey: process.env.NEWS_API_KEY,
       pageSize: 100,
     },
-    timeout: 5000,
+    timeout: process.env.AXIOS_TIMEOUT,
   };
   return new Promise(async (resolve, reject) => {
     try {

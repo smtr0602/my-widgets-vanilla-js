@@ -10,7 +10,7 @@ const getCurrencyData = async () => {
     headers: {
       apikey: process.env.EXCHANGE_RATES_API_KEY,
     },
-    timeout: 5000,
+    timeout: process.env.AXIOS_TIMEOUT,
   };
 
   return new Promise(async (resolve, reject) => {
