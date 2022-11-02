@@ -7,6 +7,7 @@ const getNewsData = async () => {
     params: {
       country: 'jp',
       apiKey: process.env.NEWS_API_KEY,
+      pageSize: 100,
     },
     timeout: 5000,
   };

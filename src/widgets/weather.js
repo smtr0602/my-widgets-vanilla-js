@@ -1,12 +1,21 @@
 import axios from 'axios';
 import { format } from 'date-fns';
+import { getCurrentLocation } from '../helpers';
 
 const getWeatherData = async () => {
+  const { longitude, latitude } = await getCurrentLocation();
+  // vancouver location
+  const defaultLocation = {
+    lat: '49.2827',
+    lon: '-123.1207',
+  };
   const options = {
     method: 'GET',
     url: process.env.WEATHER_API_URL,
-    // vancouver location
-    params: { lat: '49.2827', lon: '-123.1207' },
+    params: {
+      lat: latitude || defaultLocation.lat,
+      lon: longitude || defaultLocation.lon,
+    },
     headers: {
       'X-RapidAPI-Key': process.env.RAPID_API_KEY,
       'X-RapidAPI-Host': 'weatherbit-v1-mashape.p.rapidapi.com',
@@ -44,6 +53,7 @@ const getWeatherData = async () => {
         `;
       });
       document.querySelector('.weather').innerHTML += `
+      <p class="weather__location">Weather in: ${data.city_name} (timezone: ${data.timezone})</p>
       <ul>${listItems}</ul>
       `;
       resolve();

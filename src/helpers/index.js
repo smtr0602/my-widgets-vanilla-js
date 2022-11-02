@@ -13,8 +13,27 @@ export const getTimeOfDayText = () => {
 
 export const defaultTimeout = (time) => {
   return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve();
-    }, time);
+    try {
+      setTimeout(() => {
+        resolve();
+      }, time);
+    } catch (error) {
+      reject(error);
+    }
+  });
+};
+
+export const getCurrentLocation = async () => {
+  return new Promise((resolve, reject) => {
+    try {
+      navigator.geolocation.getCurrentPosition((data) => {
+        const {
+          coords: { latitude, longitude },
+        } = data;
+        resolve({ latitude, longitude });
+      });
+    } catch (error) {
+      reject(error);
+    }
   });
 };
